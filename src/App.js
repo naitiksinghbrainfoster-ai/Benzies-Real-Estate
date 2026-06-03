@@ -14,6 +14,9 @@ import Rent from "./pages/rent";
 import Sell from "./pages/sell";
 import Contact from "./pages/contact";
 import About from "./pages/about";
+import PropertyDetails from "./pages/propertydetails";
+import RentPropertyDetail from "./pages/rentpropertydetail";
+import LatestProperties from "./pages/latestpropertycard";
 
 import whatsappIcon from "./assets/img/ic_baseline-whatsapp.svg";
 import ScrollToTop from "./components/ScrollToTop";
@@ -71,6 +74,21 @@ function App() {
           <Route
             path="/about"
             element={<About />}
+          />
+
+          <Route
+            path="/property/:slug"
+            element={<PropertyDetails />}
+          />
+
+          <Route
+            path="/rent-property/:slug"
+            element={<RentPropertyDetail />}
+          />
+
+          <Route
+            path="/latest-properties/:slug"
+            element={<LatestProperties />}
           />
 
         </Routes>

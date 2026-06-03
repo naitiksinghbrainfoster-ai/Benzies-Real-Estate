@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import Property1 from "../../assets/img/homeimg/propertylistings1.png";
-import Property2 from "../../assets/img/homeimg/propertylistings2.png";
-import Property3 from "../../assets/img/homeimg/propertylistings3.png";
+import rentProperties from "../../data/rentProperties";
 
 import BedIcon from "../../assets/img/homeimg/propertylistings-bedicon.svg";
 import PersonIcon from "../../assets/img/homeimg/propertylistings-personicon.svg";
@@ -27,26 +26,7 @@ const PropertyListings = () => {
 
   }, []);
 
-  const properties = [
-    {
-      image: Property1,
-      price: "€2,400",
-      title: "Luxury Villa With Panoramic Sea Views",
-      location: "Marbella, Costa del Sol",
-    },
-    {
-      image: Property2,
-      price: "€4,800",
-      title: "Exclusive Investment Apartment in Spain",
-      location: "Puerto Banús, Marbella",
-    },
-    {
-      image: Property3,
-      price: "€6,500",
-      title: "Modern Luxury Residence Golf Resorts",
-      location: "Benahavís, Costa del Sol",
-    },
-  ];
+  const properties = rentProperties;
 
   return (
 
@@ -98,22 +78,26 @@ Explore premium apartments, elegant villas, and exclusive rental residences desi
 
           {properties.map((property, index) => (
 
-            <div
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="
-                bg-white
-                border
-                border-[#E4E4E4]
-                rounded-[6px]
-                overflow-hidden
-                transition-all
-                duration-500
-                group
-                hover:bg-[#181A20]
-              "
+            <Link
+              key={property.slug}
+              to={`/rent-property/${property.slug}`}
+              className="group block"
             >
+              <div
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="
+                  bg-white
+                  border
+                  border-[#E4E4E4]
+                  rounded-[6px]
+                  overflow-hidden
+                  transition-all
+                  duration-500
+                  group
+                  hover:bg-[#181A20]
+                "
+              >
 
               {/* Image */}
               <div className="relative overflow-hidden">
@@ -407,6 +391,8 @@ Explore premium apartments, elegant villas, and exclusive rental residences desi
               </div>
 
             </div>
+
+            </Link>
 
           ))}
 

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,6 +17,7 @@ import StarWhite from "../../assets/img/homeimg/propertylistings-starwithoutcolo
 
 import VrIcon from "../../assets/img/homeimg/discover-firsticon2.svg";
 import arrowIcon from "../../assets/img/homeimg/discover-arrow.svg";
+import latestProperties from "../../data/latestProperties";
 
 const PropertyListings = () => {
 
@@ -28,26 +30,7 @@ const PropertyListings = () => {
 
   }, []);
 
-  const properties = [
-    {
-      image: Property1,
-      price: "€2,400",
-      title: "Luxury Villa With Panoramic Sea Views",
-      location: "Marbella, Costa del Sol",
-    },
-    {
-      image: Property2,
-      price: "€4,800",
-      title: "Exclusive Investment Apartment in Spain",
-      location: "Puerto Banús, Marbella",
-    },
-    {
-      image: Property3,
-      price: "€6,500",
-      title: "Modern Luxury Residence Near Resorts",
-      location: "Benahavís, Costa del Sol",
-    },
-  ];
+  const properties = latestProperties;
 
   return (
 
@@ -102,22 +85,26 @@ const PropertyListings = () => {
 
           {properties.map((property, index) => (
 
-            <div
-              key={index}
-              data-aos="fade-up"
-              data-aos-delay={index * 100}
-              className="
-                bg-white
-                border
-                border-[#E4E4E4]
-                rounded-[6px]
-                overflow-hidden
-                transition-all
-                duration-500
-                group
-                hover:bg-[#181A20]
-              "
+            <Link
+              key={property.slug}
+              to={`/latest-properties/${property.slug}`}
+              className="group block"
             >
+              <div
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
+                className="
+                  bg-white
+                  border
+                  border-[#E4E4E4]
+                  rounded-[6px]
+                  overflow-hidden
+                  transition-all
+                  duration-500
+                  group
+                  hover:bg-[#181A20]
+                "
+              >
 
               {/* Image */}
               <div className="relative overflow-hidden">
@@ -412,12 +399,14 @@ const PropertyListings = () => {
 
             </div>
 
+            </Link>
+
           ))}
 
         </div>
 
         {/* Bottom Button */}
-        <div
+        {/* <div
           data-aos="fade-up"
           data-aos-delay="300"
           className="text-center mt-14 sm:mt-20"
@@ -453,7 +442,7 @@ const PropertyListings = () => {
 
           </button>
 
-        </div>
+        </div> */}
 
       </div>
 
