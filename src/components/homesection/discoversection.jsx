@@ -248,7 +248,7 @@ const DiscoverSection = () => {
                 hover:scale-[1.03]
               ">
 
-                Schedule Consultation
+                Schedule a Viewing
 
               </button>
 

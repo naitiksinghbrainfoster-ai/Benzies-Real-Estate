@@ -10,7 +10,7 @@ app.use(express.json());
 // ✅ CHANGE 1: Split into BASE_PARAMS (no filter ID)
 const BASE_PARAMS = {
   p1: "1032028",
-  p2: "5630449262bde5d630bcac15aec0db9bb6ecb20f",
+  p2: "aacec3b388dfc7f7ff4dde204fd16c13eea908a8",
   p_output: "json",
   P_Lang: 1
 };
@@ -42,23 +42,36 @@ app.get("/api/properties", async (req, res) => {
   }
 });
 
-// GET PROPERTY DETAILS
+// GET PROPERTY DETAILS - Use SearchProperties and filter server-side
 app.get("/api/property/:ref", async (req, res) => {
   try {
     const { ref } = req.params;
+    // Fetch all properties and filter by reference on the backend
     const response = await axios.get(
-      "https://webapi.resales-online.com/V6/PropertyDetails",
+      "https://webapi.resales-online.com/V6/SearchProperties",
       {
         params: {
-          ...BASE_PARAMS,        // ✅ CHANGE 3: no p_agency_filterid here
-          P_RefId: ref,
-          p_RTA: false           // ✅ CHANGE 2: false (was true)
+          ...BASE_PARAMS,
+          p_agency_filterid: 1,
+          P_Page: 1,
+          p_RTA: false
         }
       }
     );
-    console.log(`Property Details for ${ref}`);
-    console.log(JSON.stringify(response.data, null, 2));
-    res.json(response.data);
+    
+    console.log(`Fetching property ${ref}, response status: ${response.data.transaction?.status}`);
+    
+    // Filter the property from the list
+    const properties = response.data.Property || [];
+    const property = properties.find(p => p.Reference === ref);
+    
+    if (property) {
+      console.log(`✅ Property ${ref} found`);
+      res.json({ Property: [property], transaction: response.data.transaction });
+    } else {
+      console.log(`❌ Property ${ref} not found in list`);
+      res.status(404).json({ error: "Property not found", Property: [] });
+    }
   } catch (error) {
     console.error("PropertyDetails Error:", error.response?.data || error.message);
     res.status(500).json({ error: error.response?.data || error.message });
@@ -70,18 +83,25 @@ app.get("/api/property-id/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const response = await axios.get(
-      "https://webapi.resales-online.com/V6/PropertyDetails",
+      "https://webapi.resales-online.com/V6/SearchProperties",
       {
         params: {
-          ...BASE_PARAMS,        // ✅ CHANGE 3: no p_agency_filterid here
-          P_RefId: id,
-          p_RTA: false           // ✅ CHANGE 2: false (was true)
+          ...BASE_PARAMS,
+          p_agency_filterid: 1,
+          P_Page: 1,
+          p_RTA: false
         }
       }
     );
-    console.log(`Property Details for ID ${id}`);
-    console.log(JSON.stringify(response.data, null, 2));
-    res.json(response.data);
+    
+    // Filter the property from the list
+    const property = response.data.Property?.find(p => p.Reference === id);
+    
+    if (property) {
+      res.json({ Property: [property], transaction: response.data.transaction });
+    } else {
+      res.status(404).json({ error: "Property not found", Property: [] });
+    }
   } catch (error) {
     console.error("PropertyDetails Error:", error.response?.data || error.message);
     res.status(500).json({ error: error.response?.data || error.message });

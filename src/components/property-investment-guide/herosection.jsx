@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-import banner from "../../assets/img/aboutimg/heroabout.png";
+import banner from "../../assets/img/whybuyproperty/herosection.png";
 
 const HeroSection = () => {
 
@@ -60,30 +60,13 @@ const HeroSection = () => {
             "
           >
 
-          About Benzies Real Estate
+          Property Investment Guide
+
 
           </h1>
 
           {/* Paragraph */}
-          <p
-            data-aos="fade-up"
-            data-aos-delay="500"
-            className="
-              text-white
-              text-[18px]
-              leading-[32px]
-              sm:text-[22px]
-              sm:leading-[34px]
-              mt-2
-              sm:mt-2
-              max-w-[600px]
-              font-[Poppins]
-            "
-          >
-
-           Benzies Real Estate provides premium property guidance, investment expertise, and trusted support for international clients seeking exceptional real estate opportunities.
-
-          </p>
+      
 
         </div>
 

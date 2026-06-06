@@ -134,7 +134,7 @@ const ExperienceSection = () => {
                 hover:scale-[1.03]
               ">
 
-                Schedule Consultation
+                Schedule a Viewing
 
               </button>
 
@@ -158,7 +158,7 @@ const ExperienceSection = () => {
                 hover:scale-[1.03]
               ">
 
-                Explore Properties
+                Request a Free Consultation
 
               </button>
 

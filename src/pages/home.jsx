@@ -12,6 +12,8 @@ import HowwehelpSection from "../components/homesection/howwehelp";
 
 import TestimonialsSection from "../components/homesection/testimonialsSection";
 import Latestoffersection from "../components/homesection/LatestUpdatesOffers";
+import ContactForm from "../components/homesection/contactfrom";
+
 import Footer from "../components/footer";
 
 const Home = () => {
@@ -30,6 +32,7 @@ const Home = () => {
     <HowwehelpSection />
     <TestimonialsSection />
     <Latestoffersection />
+    <ContactForm />
       <Footer />
     </>
   );

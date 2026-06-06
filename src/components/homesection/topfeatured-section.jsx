@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -15,27 +16,27 @@ import arrowIcon from "../../assets/img/homeimg/discover-arrow.svg";
 const locations = [
   {
     image: top1,
-    title: "Barcelona",
-  },
-  {
-    image: top2,
-    title: "Costa Blanca",
-  },
-  {
-    image: top3,
     title: "Marbella",
   },
   {
+    image: top2,
+    title: "Estepona",
+  },
+  {
+    image: top3,
+    title: "Mijas",
+  },
+  {
     image: top4,
-    title: "Ibiza",
+    title: "Benahavís",
   },
   {
     image: top5,
-    title: "Madrid",
+    title: "Fuengirola",
   },
   {
     image: top6,
-    title: "Mallorca",
+    title: "Málaga",
   },
 ];
 
@@ -197,35 +198,36 @@ const TopFeaturedSection = () => {
 
           </p>
 
-          <button className="
-            bg-[#183346]
-            text-white
-            px-8
-            sm:px-10
-            py-4
-            sm:py-5
-            inline-flex
-            items-center
-            gap-4
-            text-[16px]
-            sm:text-[20px]
-            font-medium
-            font-[Poppins]
-            hover:bg-black
-            transition-all
-            duration-300
-            hover:scale-[1.03]
-          ">
+         <Link
+  to="/discover-destinations"
+  className="
+    bg-[#183346]
+    text-white
+    px-8
+    sm:px-10
+    py-4
+    sm:py-5
+    inline-flex
+    items-center
+    gap-4
+    text-[16px]
+    sm:text-[20px]
+    font-medium
+    font-[Poppins]
+    hover:bg-black
+    transition-all
+    duration-300
+    hover:scale-[1.03]
+  "
+>
+  View All Locations
 
-            View All Locations
-
-            <img
-              src={arrowIcon}
-              alt="arrow"
-              className="w-5"
-            />
-
-          </button>
+  <img
+    src={arrowIcon}
+    alt="arrow"
+    className="w-5"
+  />
+</Link>
 
         </div>
 

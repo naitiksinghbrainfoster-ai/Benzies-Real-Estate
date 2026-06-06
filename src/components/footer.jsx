@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import footerLogo from "../assets/img/footer-logo.svg";
 
 import facebook from "../assets/img/social media logo/facebook.svg";
@@ -69,19 +69,19 @@ const Footer = () => {
             <ul className="space-y-5 text-[18px] text-white/80">
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Apartment for Sale
+                Marbella
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Apartment for Rent
+                Estepona
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Offices for Sale
+                Mijas
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Offices for Rent
+                Fuengirola
               </li>
 
             </ul>
@@ -96,19 +96,15 @@ const Footer = () => {
             <ul className="space-y-5 text-[18px] text-white/80">
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Terms of Use
+                Buy
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Privacy Policy
+                Rent 
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Pricing Plans
-              </li>
-
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Our Services
+                Sell
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
@@ -116,7 +112,11 @@ const Footer = () => {
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Careers
+                About Us
+              </li>
+
+              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
+                Services
               </li>
 
               <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
@@ -134,25 +134,75 @@ const Footer = () => {
 
             <ul className="space-y-5 text-[18px] text-white/80">
 
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Chicago
-              </li>
+         <div>
 
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                Los Angeles
-              </li>
+  <ul className="space-y-5 text-[18px] text-white/80">
+<li>
+  <Link
+    to="/why-buy-property-in-spain"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Why Buy Property in Spain
+  </Link>
+</li>
 
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                New Jersey
-              </li>
+<li>
+  <Link
+    to="/buying-process"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Buying Process
+  </Link>
+</li>
 
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                New York
-              </li>
+<li>
+  <Link
+    to="/property-investment-guide"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Property Investment Guide
+  </Link>
+</li>
 
-              <li className="hover:scale-105 transition duration-300 cursor-pointer hover:text-white">
-                California
-              </li>
+<li>
+  <Link
+    to="/mortgage-assistance"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Mortgage Assistance
+  </Link>
+</li>
+
+<li>
+  <Link
+    to="/nie-number-guide"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    NIE Number Guide
+  </Link>
+</li>
+
+<li>
+  <Link
+    to="/sell-your-property"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Sell Your Property
+  </Link>
+</li>
+
+<li>
+  <Link
+    to="/property-management"
+    className="hover:scale-105 transition duration-300 hover:text-white inline-block"
+  >
+    Property Management
+  </Link>
+</li>
+
+  </ul>
+</div>
+
 
             </ul>
           </div>

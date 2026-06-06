@@ -4,44 +4,34 @@ import arrowIcon from "../../assets/img/homeimg/Arrow.svg";
 
 const processData = [
   {
-    title: "Intake",
+    title: "Complete A-to-Z Guidance",
     description:
-      "We understand your goals, budget, lifestyle, and ideal property preferences in Spain.",
+      "From your initial enquiry to key handover and beyond, we manage every stage of the property-buying journey.",
   },
   {
-    title: "Property Search",
+    title: "International Team",
     description:
-      "We carefully shortlist premium properties matching your requirements, location, and investment expectations.",
+      "Our diverse team understands the expectations and requirements of international buyers and investors.",
   },
   {
-    title: "Viewings",
+    title: "Multilingual Support",
     description:
-      "We arrange personalized property tours and provide expert guidance during every viewing experience.",
+      "We help eliminate language barriers by providing clear communication and personalized assistance.",
   },
   {
-    title: "NIE & Bank Account",
+    title: "Investment Opportunities",
     description:
-      "We assist with NIE applications and help you open a Spanish bank account.",
+      "Gain access to carefully selected properties offering excellent lifestyle and investment potential.",
   },
   {
-    title: "Legal Checks",
+    title: "Local Costa del Sol Expertise",
     description:
-      "Our legal partners verify ownership, documentation, debts, licenses, and property compliance before purchase.",
+      "Benefit from our in-depth knowledge of Marbella, Puerto Banús, Estepona, Benahavís, and the wider Costa del Sol region.",
   },
   {
-    title: "Notary",
+    title: "Legal & Administrative Assistance",
     description:
-      "We coordinate contracts, final signatures, and ensure a smooth notary completion process.",
-  },
-  {
-    title: "Key Handover",
-    description:
-      "Receive your property keys with complete documentation and full ownership confirmation securely.",
-  },
-  {
-    title: "Aftercare",
-    description:
-      "Ongoing support with utilities, renovations, rentals, property management, and settling into Spain.",
+      "We coordinate with trusted legal and financial professionals to ensure a smooth transaction process.",
   },
 ];
 
@@ -50,11 +40,11 @@ const BuyingProcess = () => {
     <section className="buying-process-section">
       <div className="container">
         <div className="section-heading">
-          <h2>How We Help You</h2>
+          <h2>Why Choose Benzies Real Estate</h2>
 
           <p>
-            A complete step-by-step property buying journey with expert support
-            from start to finish in Spain.
+            Trusted guidance, local expertise, and complete support for
+            international buyers investing in Spain.
           </p>
         </div>
 
@@ -63,33 +53,46 @@ const BuyingProcess = () => {
             <div className="process-wrapper" key={index}>
               <div className="process-card">
                 <h3>{item.title}</h3>
-
                 <p>{item.description}</p>
               </div>
 
-              {/* Top Row Arrows */}
-              {index < 3 && (
+              {/* Card 1 → Card 2 */}
+              {index === 0 && (
                 <div className="arrow arrow-right">
                   <img src={arrowIcon} alt="arrow" />
                 </div>
               )}
 
-              {/* Down Arrow */}
-              {index === 3 && (
+              {/* Card 2 → Card 3 */}
+              {index === 1 && (
+                <div className="arrow arrow-right">
+                  <img src={arrowIcon} alt="arrow" />
+                </div>
+              )}
+
+              {/* Card 3 ↓ Card 4 */}
+              {index === 2 && (
                 <div className="arrow arrow-down">
                   <img src={arrowIcon} alt="arrow" />
                 </div>
               )}
 
-              {/* Bottom Row Arrows */}
-              {index > 4 && (
+              {/* Card 6 ← Card 5 */}
+              {index === 5 && (
                 <div className="arrow arrow-left">
                   <img src={arrowIcon} alt="arrow" />
                 </div>
               )}
 
-              {/* Up Arrow */}
+              {/* Card 5 ← Card 4 */}
               {index === 4 && (
+                <div className="arrow arrow-left">
+                  <img src={arrowIcon} alt="arrow" />
+                </div>
+              )}
+
+              {/* Card 6 ↑ Card 1 */}
+              {index === 3 && (
                 <div className="arrow arrow-up">
                   <img src={arrowIcon} alt="arrow" />
                 </div>
@@ -114,33 +117,31 @@ const BuyingProcess = () => {
 
         .section-heading {
           text-align: center;
-          margin-bottom: 90px;
+          margin-bottom: 70px;
         }
 
         .section-heading h2 {
           font-size: 62px;
           line-height: 1.1;
           color: #111111;
-          margin-bottom: 18px;
+          margin-bottom: 16px;
           font-family: "Pochaevsk";
           font-weight: 400;
         }
 
         .section-heading p {
-          max-width: 760px;
+          max-width: 700px;
           margin: 0 auto;
           font-size: 18px;
           line-height: 1.8;
           color: #5f5f5f;
           font-family: "Poppins", sans-serif;
-          font-weight: 400;
         }
 
         .process-grid {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 100px 85px;
-          position: relative;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 90px 40px;
         }
 
         .process-wrapper {
@@ -150,21 +151,23 @@ const BuyingProcess = () => {
         .process-card {
           background: #ecf1f8;
           border-radius: 24px;
-          padding: 36px 28px;
-          min-height: 270px;
+          padding: 42px 34px;
+          min-height: 250px;
           position: relative;
-          z-index: 2;
-          transition: 0.3s ease;
+          z-index: 10;
+          transition: all 0.35s ease;
+          border: 1px solid transparent;
         }
 
         .process-card:hover {
-          transform: translateY(-6px);
+          transform: translateY(-8px);
+          border-color: #d5deea;
         }
 
         .process-card h3 {
           font-size: 26px;
           line-height: 1.2;
-          color: #000000;
+          color: #000;
           margin-bottom: 20px;
           font-family: "Pochaevsk";
           font-weight: 400;
@@ -176,63 +179,60 @@ const BuyingProcess = () => {
           color: #2f2f2f;
           margin: 0;
           font-family: "Poppins", sans-serif;
-          font-weight: 400;
         }
 
         /* Arrow Common */
         .arrow {
           position: absolute;
-          z-index: 1;
+          z-index: 5;
         }
 
         .arrow img {
-          width: 140px;
-          height: 20px;
+          width: 90px;
+          height: 18px;
           object-fit: contain;
         }
 
-        /* Top Row */
-        .arrow-right {
-          top: 50%;
-          right: -112px;
-          transform: translateY(-50%);
-        }
+       .arrow-right {
+  top: 50%;
+  right: -65px;
+  transform: translateY(-50%) rotate(180deg);
+}
 
-        /* Bottom Row */
-        .arrow-left {
-          top: 50%;
-          left: -112px;
-          transform: translateY(-50%) rotate(180deg);
-        }
+        /* Bottom Row ← */
+       .arrow-left {
+  top: 50%;
+  left: -65px;
+  transform: translateY(-50%);
+}
 
-      /* Down Arrow */
-.arrow-down {
-  bottom: -10px;
+     .arrow-down {
+  bottom: -25px;
   left: 50%;
   transform: translateX(-50%) rotate(-90deg);
 }
 
-/* Up Arrow */
 .arrow-up {
-  top: -10px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%) rotate(90deg);
 }
+
         @media (max-width: 1399px) {
           .process-grid {
-            gap: 130px 65px;
+            gap: 80px 30px;
           }
 
           .arrow-right {
-            right: -95px;
+            right: -55px;
           }
 
           .arrow-left {
-            left: -95px;
+            left: -55px;
           }
 
           .arrow img {
-            width: 120px;
+            width: 75px;
           }
         }
 
@@ -242,7 +242,7 @@ const BuyingProcess = () => {
           }
 
           .section-heading {
-            margin-bottom: 60px;
+            margin-bottom: 55px;
           }
 
           .section-heading h2 {
@@ -251,7 +251,7 @@ const BuyingProcess = () => {
 
           .process-grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 30px;
           }
 
           .arrow {
@@ -270,12 +270,11 @@ const BuyingProcess = () => {
 
           .section-heading p {
             font-size: 16px;
-            line-height: 1.7;
           }
 
           .process-grid {
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 20px;
           }
 
           .process-card {

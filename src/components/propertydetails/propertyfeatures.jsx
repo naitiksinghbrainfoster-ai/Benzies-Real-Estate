@@ -1,6 +1,13 @@
 import React from "react";
 
-const PropertyFeatures = ({ features = [] }) => {
+// ✅ property prop comes from parent page
+const PropertyFeatures = ({ property }) => {
+
+  // ✅ Flatten all feature values from API categories
+  const features = property?.PropertyFeatures?.Category?.flatMap(
+    (cat) => cat.Value.map((v) => `${cat.Type}: ${v}`)
+  ) || [];
+
   return (
     <section className="py-20 bg-white">
 
@@ -13,13 +20,8 @@ const PropertyFeatures = ({ features = [] }) => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
 
           {features.map((item, index) => (
-            <div
-              key={index}
-              className="border border-[#E4E4E4] rounded-md p-6"
-            >
-              <h4 className="text-[20px] font-[Poppins]">
-                ✓ {item}
-              </h4>
+            <div key={index} className="border border-[#E4E4E4] rounded-md p-6">
+              <h4 className="text-[20px] font-[Poppins]">✓ {item}</h4>
             </div>
           ))}
 

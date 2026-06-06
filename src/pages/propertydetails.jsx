@@ -1,78 +1,71 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
-
 import Header from "../components/header";
+import Footer from "../components/footer";
+
+// ✅ API hook
+import { useProperty } from "../hooks/useProperties";
+
+// Components
 import HeroSection from "../components/propertydetails/propertyhero";
 import PropertyOverview from "../components/propertydetails/propertyoverview";
 import PropertyGallery from "../components/propertydetails/propertygallery";
 import PropertyFeatures from "../components/propertydetails/propertyfeatures";
 import PropertyLocation from "../components/propertydetails/propertylocation";
 import PropertyAgent from "../components/propertydetails/propertyagent";
-import PropertySimilar from "../components/propertydetails/similarproperties";
+import SimilarProperties from "../components/propertydetails/similarproperties";
 
-import Footer from "../components/footer";
-import properties from "../data/properties";
-import latestProperties from "../data/latestProperties";
-import rentProperties from "../data/rentProperties";
+const PropertyDetailPage = () => {
 
-const PropertyDetails = () => {
+  // ✅ FIX 1: App.js uses ":slug" so we must use slug here
   const { slug } = useParams();
-  const allProperties = [...properties, ...latestProperties, ...rentProperties];
 
-  const property = allProperties.find(
-    (item) => item.slug === slug || item.id === Number(slug)
-  );
+  // ✅ FIX 2: Extract the Reference from slug
+  // URL can be: /property/R5400709  OR  /property/middle-floor-apartment-R5400709
+  // We extract the Reference (starts with R + digits) from the end of the slug
+  const refMatch = slug?.match(/R\d+$/i);
+  const propertyRef = refMatch ? refMatch[0] : slug;
 
-  useEffect(() => {
-    if (property) {
-      document.title = `${property.title} | Benzies Real Estate`;
-    } else {
-      document.title = "Property Not Found | Benzies Real Estate";
-    }
+  // ✅ Fetch single property using the reference
+  const { property, loading, error } = useProperty(propertyRef);
 
-    return () => {
-      document.title = "Benzies Real Estate";
-    };
-  }, [property]);
-
-  if (!property) {
+  if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center px-4 py-20">
-        <div className="max-w-xl text-center">
-          <h1 className="text-[32px] font-[Pochaevsk] mb-4">
-            Property not found
-          </h1>
-
-          <p className="text-[#6F6F6F]">
-            The property you are looking for does not exist or the link is
-            invalid.
-          </p>
+      <>
+        <Header />
+        <div className="min-h-screen flex items-center justify-center text-[#6F6F6F] font-[Poppins] text-[20px]">
+          Loading property...
         </div>
-      </div>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error || !property) {
+    return (
+      <>
+        <Header />
+        <div className="min-h-screen flex items-center justify-center text-red-500 font-[Poppins] text-[20px]">
+          Property not found.
+        </div>
+        <Footer />
+      </>
     );
   }
 
   return (
     <>
       <Header />
-
       <HeroSection property={property} />
-
       <PropertyOverview property={property} />
-
       <PropertyGallery property={property} />
-
-      <PropertyFeatures features={property.features} />
-
+      <PropertyFeatures property={property} />
       <PropertyLocation property={property} />
-
-      <PropertyAgent property={property} />
-
-      <PropertySimilar currentPropertyId={property.id} />
-
+      <PropertyAgent />
+      <SimilarProperties />
       <Footer />
     </>
   );
 };
 
-export default PropertyDetails;
+export default PropertyDetailPage;
