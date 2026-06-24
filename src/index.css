@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ================= GOOGLE TRANSLATE HIDE ================= */
+
+.goog-te-banner-frame.skiptranslate,
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+  min-height: 0px !important;
+}
+
+.goog-logo-link,
+.goog-te-gadget span,
+.goog-te-gadget-simple img {
+  display: none !important;
+}
+
+.goog-te-gadget {
+  color: transparent !important;
+  font-size: 0px !important;
+  height: 0px !important;
+  overflow: hidden !important;
+}
+
+.skiptranslate {
+  display: none !important;
+}
+
+/* Prevent translating language dropdown */
+
+.notranslate {
+  translate: no;
+}
